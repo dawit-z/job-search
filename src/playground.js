@@ -1,5 +1,7 @@
-const numbers = [1, 2, 3, 4, 5];
+const favoriteFood = "sushi";
 
-const squares = numbers.map((number) => number * number);
+const goodFoods = {
+  [favoriteFood]: true,
+};
 
-console.log(squares);
+console.log(goodFoods);

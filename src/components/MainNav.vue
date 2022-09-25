@@ -1,12 +1,14 @@
 <template>
   <header class="w-full text-sm">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
+
       <div
         class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-brand-gray-1"
       >
         <a :href="url" class="flex items-center h-full text-xl">{{
           company
         }}</a>
+
         <nav class="h-full ml-12">
           <ul class="flex h-full p-0 m-0 list-none">
             <li
@@ -21,26 +23,30 @@
             </li>
           </ul>
         </nav>
+
         <div class="flex items-center h-full ml-auto">
           <ActionButton
             v-if="!isLoggedIn"
+            text="Sign in"
             data-test="login-button"
             @click="loginUser"
           />
           <ProfileImage v-else data-test="profile-image" />
         </div>
       </div>
+      <Subnav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script>
 import ActionButton from "@/components/ActionButton.vue";
-import ProfileImage from "./ProfileImage.vue";
+import ProfileImage from "@/components/ProfileImage.vue";
+import Subnav from "@/components/Subnav.vue";
 
 export default {
   name: "MainNav",
-  components: { ActionButton, ProfileImage },
+  components: { ActionButton, ProfileImage, Subnav, },
   data() {
     return {
       company: "Careers",

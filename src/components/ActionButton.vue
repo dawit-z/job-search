@@ -1,13 +1,54 @@
 <template>
-  <button
-    class="px-5 py-3 font-medium text-white border-0 rounded bg-brand-blue-1 hover:shadow-blue"
-  >
-    Sign In
+  <button :class="buttonClass">
+    {{ text }}
   </button>
 </template>
 
 <script>
 export default {
   name: "ActionButton",
+  props: {
+    text: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: false,
+      default: 'primary',
+      validator(value) {
+        return ['primary', 'secondary'].includes(value);
+      }
+    }
+  },
+  computed: {
+    buttonClass() {
+      return {
+        [this.type]: true,
+      }
+    }
+  }
 };
 </script>
+
+<style scoped>
+button {
+  @apply px-5 py-3 rounded font-medium;
+}
+
+.primary {
+  @apply text-white border-0 bg-brand-blue-1
+}
+
+.primary:hover {
+  @apply shadow-blue
+}
+
+.secondary {
+  @apply text-brand-blue-1 bg-transparent;
+}
+
+.secondary:hover {
+  @apply text-white bg-brand-blue-2;
+}
+</style>
