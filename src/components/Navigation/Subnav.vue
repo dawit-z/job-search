@@ -3,7 +3,9 @@
     <div class="flex items-center h-full px-8">
       <div v-if="onJobPage">
         <font-awesome-icon class="mr-3" :icon="['fas', 'search']" />
-        <span data-test="job-count"><span class="text-brand-green-1">1653</span> jobs matched</span>
+        <span data-test="job-count"
+          ><span class="text-brand-green-1">1653</span> jobs matched</span
+        >
       </div>
     </div>
   </div>
@@ -11,11 +13,11 @@
 
 <script>
 export default {
-  name: 'Subnav',
+  name: "Subnav",
   data() {
     return {
       onJobPage: true,
-    }
-  }
-}
+    };
+  },
+};
 </script>

@@ -15,19 +15,19 @@ export default {
     type: {
       type: String,
       required: false,
-      default: 'primary',
+      default: "primary",
       validator(value) {
-        return ['primary', 'secondary'].includes(value);
-      }
-    }
+        return ["primary", "secondary"].includes(value);
+      },
+    },
   },
   computed: {
     buttonClass() {
       return {
         [this.type]: true,
-      }
-    }
-  }
+      };
+    },
+  },
 };
 </script>
 
@@ -37,11 +37,11 @@ button {
 }
 
 .primary {
-  @apply text-white rounded border-0 bg-brand-blue-1
+  @apply text-white rounded border-0 bg-brand-blue-1;
 }
 
 .primary:hover {
-  @apply shadow-blue
+  @apply shadow-blue;
 }
 
 .secondary {

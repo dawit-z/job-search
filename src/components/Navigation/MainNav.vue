@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import ActionButton from "@/components/ActionButton.vue";
-import ProfileImage from "@/components/ProfileImage.vue";
-import Subnav from "@/components/Subnav.vue";
+import ActionButton from "@/components/Common/ActionButton.vue";
+import ProfileImage from "@/components/Navigation/ProfileImage.vue";
+import Subnav from "@/components/Navigation/Subnav.vue";
 
 export default {
   name: "MainNav",
-  components: { ActionButton, ProfileImage, Subnav, },
+  components: { ActionButton, ProfileImage, Subnav },
   data() {
     return {
       company: "Careers",
@@ -66,8 +66,8 @@ export default {
       return {
         "h-16": !this.isLoggedIn,
         "h-32": this.isLoggedIn,
-      }
-    }
+      };
+    },
   },
   methods: {
     loginUser() {

@@ -7,11 +7,10 @@
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-10">Role</label>
         <input
-          :value="role"
+          v-model="role"
           type="text"
           placeholder="Software Engineer"
           class="w-full text-lg font-normal focus:outline-none"
-          @input="updateRole"
         />
       </div>
 
@@ -23,11 +22,10 @@
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
         <input
-          :value="location"
+          v-model="location"
           type="text"
           placeholder="Dayton"
           class="w-full text-lg font-normal focus:outline-none"
-          @input="updateLocation"
         />
       </div>
     </div>
@@ -36,7 +34,7 @@
 </template>
 
 <script>
-import ActionButton from "./ActionButton.vue";
+import ActionButton from "@/components/Common/ActionButton.vue";
 
 export default {
   name: "JobSearchForm",
@@ -46,14 +44,6 @@ export default {
       role: "",
       location: "",
     };
-  },
-  methods: {
-    updateRole($event) {
-      this.role = $event.target.value;
-    },
-    updateLocation($event) {
-      this.location = $event.target.value;
-    },
   },
 };
 </script>
