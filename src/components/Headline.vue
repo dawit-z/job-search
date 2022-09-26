@@ -1,7 +1,10 @@
 <template>
-  <section>
-    <h1 class="font-bold tracking-tighter text-8xl mb-14" data-test="action-phrase">
-      <span :class="actionClasses">{{action}}</span>
+  <section class="mb-16">
+    <h1
+      class="font-bold tracking-tighter text-8xl mb-14"
+      data-test="action-phrase"
+    >
+      <span :class="actionClasses">{{ action }}</span>
       <br />
       for everyone
     </h1>
@@ -13,10 +16,10 @@
 import nextElementInList from "@/utils/nextElementInList";
 
 export default {
-  name: 'Headline',
+  name: "Headline",
   data() {
     return {
-      action: 'Build',
+      action: "Build",
       interval: null,
     };
   },
@@ -24,8 +27,8 @@ export default {
     actionClasses() {
       return {
         [this.action.toLowerCase()]: true,
-      }
-    }
+      };
+    },
   },
   created() {
     this.changeTitle();
@@ -36,9 +39,9 @@ export default {
   methods: {
     changeTitle() {
       this.interval = setInterval(() => {
-        const actions = ['Build', 'Create', 'Design', 'Code'];
+        const actions = ["Build", "Create", "Design", "Code"];
         this.action = nextElementInList(actions, this.action);
-      }, 3000)
+      }, 3000);
     },
   },
 };
