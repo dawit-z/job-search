@@ -2,25 +2,21 @@ import MainNav from "@/components/Navigation/MainNav.vue";
 import { RouterLinkStub, shallowMount } from "@vue/test-utils";
 
 describe("MainNav", () => {
-  it("displays company name", () => {
-    const wrapper = shallowMount(MainNav, {
-      global: {
-        stubs: {
-          "router-link": RouterLinkStub,
-        },
+  const createConfig = () => ({
+    global: {
+      stubs: {
+        "router-link": RouterLinkStub,
       },
-    });
+    },
+  });
+
+  it("displays company name", () => {
+    const wrapper = shallowMount(MainNav, createConfig());
     expect(wrapper.text()).toMatch("Careers");
   });
 
   it("displays menu items for navigation", () => {
-    const wrapper = shallowMount(MainNav, {
-      global: {
-        stubs: {
-          "router-link": RouterLinkStub,
-        },
-      },
-    });
+    const wrapper = shallowMount(MainNav, createConfig());
     const navMenuItems = wrapper.findAll("[data-test='main-nav-list-item']");
     const navMenuTexts = navMenuItems.map((item) => item.text());
 
@@ -36,13 +32,7 @@ describe("MainNav", () => {
 
   describe("when user is logged out", () => {
     it("prompts user to sign in", () => {
-      const wrapper = shallowMount(MainNav, {
-        global: {
-          stubs: {
-            "router-link": RouterLinkStub,
-          },
-        },
-      });
+      const wrapper = shallowMount(MainNav, createConfig());
       const loginButton = wrapper.find("[data-test='login-button']");
       expect(loginButton.exists()).toBe(true);
     });
@@ -50,13 +40,7 @@ describe("MainNav", () => {
 
   describe("when user logs in", () => {
     it("displays user profile picture", async () => {
-      const wrapper = shallowMount(MainNav, {
-        global: {
-          stubs: {
-            "router-link": RouterLinkStub,
-          },
-        },
-      });
+      const wrapper = shallowMount(MainNav, createConfig());
       let profileImage = wrapper.find("[data-test='profile-image']");
       expect(profileImage.exists()).toBe(false);
 
@@ -68,13 +52,7 @@ describe("MainNav", () => {
     });
 
     it("dispays subnav with information", async () => {
-      const wrapper = shallowMount(MainNav, {
-        global: {
-          stubs: {
-            "router-link": RouterLinkStub,
-          },
-        },
-      });
+      const wrapper = shallowMount(MainNav, createConfig());
       let subnav = wrapper.find("[data-test='subnav']");
       expect(subnav.exists()).toBe(false);
 

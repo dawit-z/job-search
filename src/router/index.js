@@ -1,6 +1,9 @@
-import Home from "@/views/Home.vue";
-import Jobs from "@/views/Jobs.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
+
+const Home = () => import("@/views/Home.vue");
+const JobResults = () =>
+  import(/* webpackChuckName: "jobs"*/ "@/views/JobResults.vue");
+const Job = () => import(/* webpackChuckName: "jobs"*/ "@/views/Job.vue");
 
 const routes = [
   {
@@ -10,8 +13,13 @@ const routes = [
   },
   {
     path: "/jobs",
-    name: "Jobs",
-    component: Jobs,
+    name: "JobResults",
+    component: JobResults,
+  },
+  {
+    path: "/jobs/:id",
+    name: "Job",
+    component: Job,
   },
 ];
 
