@@ -8,7 +8,7 @@
           :to="{ name: 'Home' }"
           class="flex items-center h-full text-xl"
         >
-          Careers
+          Dawit
         </router-link>
 
         <nav class="h-full ml-12">
