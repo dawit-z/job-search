@@ -1,7 +1,14 @@
-const interval = setInterval(() => {
-  console.log("print every 2 secs");
-}, 2000);
+const axios = require("axios");
 
-setTimeout(() => {
-  clearInterval(interval);
-}, 10000);
+const url = "http://localhost:3000/jobs";
+
+const fetchJobsv1 = () => {
+  axios.get(url).then((res) => {
+    console.log(res.data);
+  });
+};
+
+const fetchJobsv2 = async () => {
+  const res = await axios.get(url);
+  console.log(res.data);
+};
