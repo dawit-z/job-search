@@ -1,26 +1,32 @@
 <template>
   <main class="flex-auto p-8 bg-brand-gray-2">
     <ol>
-      <JobListing v-for="job in displayedJobs" :key="job.id" :job="job" data-test="job-listing" />
+      <JobListing
+        v-for="job in displayedJobs"
+        :key="job.id"
+        :job="job"
+        data-test="job-listing"
+      />
     </ol>
 
     <div class="mt-8 mx-auto">
       <div class="flex flex-row flex-nowrap">
-        <p class="text-sm flex-grow">Page {{currentPage}}</p>
+        <p class="text-sm flex-grow">Page {{ currentPage }}</p>
 
         <div class="flex items-center justify-center">
           <router-link
             v-if="previousPage"
-            :to="{ name: 'Jobs', query: {page: previousPage} }"
+            :to="{ name: 'JobResults', query: { page: previousPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
-            >Previous</router-link>
+            >Previous</router-link
+          >
 
           <router-link
             v-if="nextPage"
-            :to="{ name: 'Jobs',
-            query: {page: nextPage} }"
+            :to="{ name: 'JobResults', query: { page: nextPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
-             >Next</router-link>
+            >Next</router-link
+          >
         </div>
       </div>
     </div>
@@ -40,6 +46,10 @@ export default {
     };
   },
   computed: {
+    currentPage() {
+      const pageString = this.$route.query.page || "1";
+      return Number.parseInt(pageString);
+    },
     previousPage() {
       const previousPage = this.currentPage - 1;
       const firstPage = 1;
@@ -50,14 +60,10 @@ export default {
       const lastPage = this.jobs.length / 10;
       return nextPage <= lastPage ? nextPage : undefined;
     },
-    currentPage() {
-      const pageString = this.$route.query.page || "1";
-      return Number.parseInt(pageString);
-    },
     displayedJobs() {
       const firstJobIndex = (this.currentPage - 1) * 10;
       const lastJobIndex = this.currentPage * 10;
-      return this.jobs.slice(firstJobIndex, lastJobIndex)
+      return this.jobs.slice(firstJobIndex, lastJobIndex);
     },
   },
   async mounted() {

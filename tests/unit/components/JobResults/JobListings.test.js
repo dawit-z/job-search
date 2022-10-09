@@ -1,5 +1,5 @@
 import JobListings from "@/components/JobResults/JobListings.vue";
-import { flushPromises, shallowMount } from "@vue/test-utils";
+import { flushPromises, RouterLinkStub, shallowMount } from "@vue/test-utils";
 import axios from "axios";
 jest.mock("axios");
 
@@ -15,6 +15,9 @@ describe("JobListings", () => {
     global: {
       mocks: {
         $route,
+      },
+      stubs: {
+        "router-link": RouterLinkStub,
       },
     },
   });
