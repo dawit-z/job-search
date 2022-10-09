@@ -30,7 +30,7 @@ describe("Headline", () => {
     expect(actionPhrase.text()).toBe("Create for everyone");
   });
 
-  it("removes interval when component disappears", async () => {
+  it("removes interval when component disappears", () => {
     const wrapper = mount(Headline);
     wrapper.unmount();
     expect(clearInterval).toHaveBeenCalled();

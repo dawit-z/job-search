@@ -18,6 +18,7 @@
             v-if="previousPage"
             :to="{ name: 'JobResults', query: { page: previousPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
+            data-test="previous-page-link"
             >Previous</router-link
           >
 
@@ -25,6 +26,7 @@
             v-if="nextPage"
             :to="{ name: 'JobResults', query: { page: nextPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
+            data-test="next-page-link"
             >Next</router-link
           >
         </div>
@@ -57,7 +59,7 @@ export default {
     },
     nextPage() {
       const nextPage = this.currentPage + 1;
-      const lastPage = this.jobs.length / 10;
+      const lastPage = Math.ceil(this.jobs.length / 10);
       return nextPage <= lastPage ? nextPage : undefined;
     },
     displayedJobs() {
@@ -67,8 +69,9 @@ export default {
     },
   },
   async mounted() {
-    const res = await axios.get("http://localhost:3000/jobs");
-    this.jobs = res.data;
+    const baseUrl = process.env.VUE_APP_API_URL;
+    const response = await axios.get(`${baseUrl}/jobs`);
+    this.jobs = response.data;
   },
 };
 </script>
