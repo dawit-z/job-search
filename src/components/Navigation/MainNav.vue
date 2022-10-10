@@ -10,7 +10,6 @@
         >
           Dawit
         </router-link>
-
         <nav class="h-full ml-12">
           <ul class="flex h-full p-0 m-0 list-none">
             <li
@@ -44,9 +43,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import ActionButton from "@/components/Common/ActionButton.vue";
 import ProfileImage from "@/components/Navigation/ProfileImage.vue";
 import Subnav from "@/components/Navigation/Subnav.vue";
+import { LOGIN_USER } from '@/store'
 
 export default {
   name: "MainNav",
@@ -61,7 +62,6 @@ export default {
         { text: "Students", url: "/" },
         { text: "Jobs", url: "/jobs" },
       ],
-      isLoggedIn: false,
     };
   },
   computed: {
@@ -71,11 +71,12 @@ export default {
         "h-32": this.isLoggedIn,
       };
     },
+    ...mapState(["isLoggedIn"]),
   },
   methods: {
     loginUser() {
-      this.isLoggedIn = true;
+      this.$store.commit(LOGIN_USER);
     },
   },
-};
+}
 </script>
