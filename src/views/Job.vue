@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "Job",
+  name: 'Job',
   computed: {
     currentJobId() {
       return this.$route.params.id;

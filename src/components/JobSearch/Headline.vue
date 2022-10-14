@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import nextElementInList from "@/utils/nextElementInList";
+import nextElementInList from '@/utils/nextElementInList';
 
 export default {
-  name: "Headline",
+  name: 'Headline',
   data: () => ({
-    action: "Build",
+    action: 'Build',
     interval: null,
   }),
   computed: {
@@ -37,7 +37,7 @@ export default {
   methods: {
     changeTitle() {
       this.interval = setInterval(() => {
-        const actions = ["Build", "Create", "Design", "Code"];
+        const actions = ['Build', 'Create', 'Design', 'Code'];
         this.action = nextElementInList(actions, this.action);
       }, 3000);
     },

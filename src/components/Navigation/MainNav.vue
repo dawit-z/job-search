@@ -44,37 +44,37 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
-import ActionButton from "@/components/Common/ActionButton.vue";
-import ProfileImage from "@/components/Navigation/ProfileImage.vue";
-import Subnav from "@/components/Navigation/Subnav.vue";
-import { LOGIN_USER } from '@/store'
+import ActionButton from '@/components/Common/ActionButton.vue';
+import ProfileImage from '@/components/Navigation/ProfileImage.vue';
+import Subnav from '@/components/Navigation/Subnav.vue';
+import { LOGIN_USER } from '@/store';
 
 export default {
-  name: "MainNav",
+  name: 'MainNav',
   components: { ActionButton, ProfileImage, Subnav },
   data() {
     return {
       menuItems: [
-        { text: "Teams", url: "/" },
-        { text: "Locations", url: "/" },
-        { text: "Life at Careers", url: "/" },
-        { text: "How we Hire", url: "/" },
-        { text: "Students", url: "/" },
-        { text: "Jobs", url: "/jobs" },
+        { text: 'Teams', url: '/' },
+        { text: 'Locations', url: '/' },
+        { text: 'Life at Careers', url: '/' },
+        { text: 'How we Hire', url: '/' },
+        { text: 'Students', url: '/' },
+        { text: 'Jobs', url: '/jobs' },
       ],
     };
   },
   computed: {
     headerHeightClass() {
       return {
-        "h-16": !this.isLoggedIn,
-        "h-32": this.isLoggedIn,
+        'h-16': !this.isLoggedIn,
+        'h-32': this.isLoggedIn,
       };
     },
-    ...mapState(["isLoggedIn"]),
+    ...mapState(['isLoggedIn']),
   },
   methods: {
     ...mapMutations([LOGIN_USER]),
   },
-}
+};
 </script>

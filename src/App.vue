@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import MainNav from "@/components/Navigation/MainNav.vue";
+import MainNav from '@/components/Navigation/MainNav.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: { MainNav },
 };
 </script>

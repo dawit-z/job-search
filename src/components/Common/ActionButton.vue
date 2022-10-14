@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "ActionButton",
+  name: 'ActionButton',
   props: {
     text: {
       type: String,
@@ -15,9 +15,9 @@ export default {
     type: {
       type: String,
       required: false,
-      default: "primary",
+      default: 'primary',
       validator(value) {
-        return ["primary", "secondary"].includes(value);
+        return ['primary', 'secondary'].includes(value);
       },
     },
   },

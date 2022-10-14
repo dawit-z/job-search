@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import Headline from "@/components/JobSearch/Headline.vue";
-import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
+import Headline from '@/components/JobSearch/Headline.vue';
+import JobSearchForm from '@/components/JobSearch/JobSearchForm.vue';
 
 export default {
-  name: "Hero",
+  name: 'Hero',
   components: { Headline, JobSearchForm },
 };
 </script>

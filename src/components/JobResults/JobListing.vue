@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: "JobListing",
+  name: 'JobListing',
   props: {
     job: {
       type: Object,

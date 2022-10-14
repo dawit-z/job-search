@@ -7,7 +7,11 @@
     <div class="flex flex-nowrap flex-1 h-full text-base font-light">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-10">Role</label>
-        <TextInput v-model="role" data-test="role" placeholder="Software Engineer" />
+        <TextInput
+          v-model="role"
+          data-test="role"
+          placeholder="Software Engineer"
+        />
       </div>
 
       <span
@@ -17,7 +21,11 @@
 
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
-        <TextInput v-model="location" data-test="location" placeholder="Dayton" />
+        <TextInput
+          v-model="location"
+          data-test="location"
+          placeholder="Dayton"
+        />
       </div>
     </div>
     <ActionButton
@@ -30,20 +38,20 @@
 </template>
 
 <script>
-import ActionButton from "@/components/Common/ActionButton.vue";
-import TextInput from "../Common/TextInput.vue";
+import ActionButton from '@/components/Common/ActionButton.vue';
+import TextInput from '../Common/TextInput.vue';
 
 export default {
-  name: "JobSearchForm",
+  name: 'JobSearchForm',
   components: { ActionButton, TextInput },
   data: () => ({
-    role: "",
-    location: "",
+    role: '',
+    location: '',
   }),
   methods: {
     searchForJobs() {
       this.$router.push({
-        name: "JobResults",
+        name: 'JobResults',
         query: { role: this.role, location: this.location },
       });
     },

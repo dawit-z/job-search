@@ -1,10 +1,10 @@
-import getJobs from "@/api/getJobs";
-import { createStore } from "vuex";
+import getJobs from '@/api/getJobs';
+import { createStore } from 'vuex';
 
-export const LOGIN_USER = "LOGIN_USER";
-export const RECIEVE_JOBS = "RECIEVE_JOBS";
+export const LOGIN_USER = 'LOGIN_USER';
+export const RECIEVE_JOBS = 'RECIEVE_JOBS';
 
-export const FETCH_JOBS = "FETCH_JOBS";
+export const FETCH_JOBS = 'FETCH_JOBS';
 
 export const state = () => {
   return {
@@ -33,7 +33,7 @@ const store = createStore({
   state,
   mutations,
   actions,
-  strict: process.env.NODE_ENV !== "production",
+  strict: process.env.NODE_ENV !== 'production',
 });
 
 export default store;

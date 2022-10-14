@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import Hero from "@/components/JobSearch/Hero.vue";
+import Hero from '@/components/JobSearch/Hero.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: { Hero },
 };
 </script>

@@ -10,22 +10,22 @@
 
 <script>
 export default {
-  name: "TextInput",
+  name: 'TextInput',
   props: {
     placeholder: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
     modelValue: {
       type: String,
       required: true,
     },
   },
-  emits: ["update:modelValue"],
+  emits: ['update:modelValue'],
   methods: {
     handleInput($event) {
-      this.$emit("update:modelValue", $event.target.value);
+      this.$emit('update:modelValue', $event.target.value);
     },
   },
 };

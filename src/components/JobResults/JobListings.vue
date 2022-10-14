@@ -36,16 +36,16 @@
 </template>
 
 <script>
-import JobListing from "@/components/JobResults/JobListing.vue";
-import { FETCH_JOBS } from "@/store";
-import { mapActions, mapState } from "vuex";
+import JobListing from '@/components/JobResults/JobListing.vue';
+import { FETCH_JOBS } from '@/store';
+import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: "JobListings",
+  name: 'JobListings',
   components: { JobListing },
   computed: {
     currentPage() {
-      const pageString = this.$route.query.page || "1";
+      const pageString = this.$route.query.page || '1';
       return Number.parseInt(pageString);
     },
     previousPage() {
@@ -66,10 +66,10 @@ export default {
     ...mapState(['jobs']),
   },
   async mounted() {
-    this.FETCH_JOBS()
+    this.FETCH_JOBS();
   },
   methods: {
     ...mapActions([FETCH_JOBS]),
-  }
+  },
 };
 </script>
