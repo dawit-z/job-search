@@ -2,12 +2,23 @@
   <div
     class="flex flex-col p-4 bg-white border-r border-solid border-brand-gray-1 w-96"
   >
-    Job Filters Sidebar
+    <section class="pb-5">
+<div class="flex flex-row justify-between">
+  <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
+  <div class="flex items-center text-sm">
+    <ActionButton text="Clear Filters" type="secondary" />
+  </div>
+</div>
+<Accordion />
+    </section>
   </div>
 </template>
 
 <script>
+import ActionButton from '@/components/Common/ActionButton.vue';
+import Accordion from '@/components/Common/Accordion.vue';
 export default {
   name: "JobsSidebar",
+  components: { ActionButton, Accordion }
 };
 </script>

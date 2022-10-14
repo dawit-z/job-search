@@ -36,12 +36,10 @@ import TextInput from "../Common/TextInput.vue";
 export default {
   name: "JobSearchForm",
   components: { ActionButton, TextInput },
-  data() {
-    return {
-      role: "",
-      location: "",
-    };
-  },
+  data: () => ({
+    role: "",
+    location: "",
+  }),
   methods: {
     searchForJobs() {
       this.$router.push({

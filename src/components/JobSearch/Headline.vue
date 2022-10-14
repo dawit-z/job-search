@@ -17,12 +17,10 @@ import nextElementInList from "@/utils/nextElementInList";
 
 export default {
   name: "Headline",
-  data() {
-    return {
-      action: "Build",
-      interval: null,
-    };
-  },
+  data: () => ({
+    action: "Build",
+    interval: null,
+  }),
   computed: {
     actionClasses() {
       return {
