@@ -42,6 +42,7 @@ describe("MainNav", () => {
       const loginButton = wrapper.find("[data-test='login-button']");
       expect(loginButton.exists()).toBe(true);
     });
+
     it("issues call to vuex to login user", async () => {
       const commit = jest.fn();
       const $store = { state: { isLoggedIn: false }, commit };
