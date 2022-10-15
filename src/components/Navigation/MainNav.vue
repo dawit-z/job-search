@@ -52,18 +52,16 @@ import { LOGIN_USER } from '@/store';
 export default {
   name: 'MainNav',
   components: { ActionButton, ProfileImage, Subnav },
-  data() {
-    return {
-      menuItems: [
-        { text: 'Teams', url: '/' },
-        { text: 'Locations', url: '/' },
-        { text: 'Life at Careers', url: '/' },
-        { text: 'How we Hire', url: '/' },
-        { text: 'Students', url: '/' },
-        { text: 'Jobs', url: '/jobs' },
-      ],
-    };
-  },
+  data: () => ({
+    menuItems: [
+      { text: 'Teams', url: '/teams' },
+      { text: 'Locations', url: '/' },
+      { text: 'Life at Careers', url: '/' },
+      { text: 'How we Hire', url: '/' },
+      { text: 'Students', url: '/' },
+      { text: 'Jobs', url: '/jobs' },
+    ],
+  }),
   computed: {
     headerHeightClass() {
       return {
