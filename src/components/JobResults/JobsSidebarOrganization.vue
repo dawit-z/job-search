@@ -28,7 +28,7 @@
 
 <script>
 import Accordion from '@/components/Common/Accordion.vue';
-import { UNIQUE_ORGANIZATIONS, ADD_SELECTED_ORGS } from '@/store';
+import { UNIQUE_ORGANIZATIONS, ADD_SELECTED_ORGS } from '@/store/constants';
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {

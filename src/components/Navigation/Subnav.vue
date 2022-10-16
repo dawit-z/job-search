@@ -15,16 +15,16 @@
 </template>
 
 <script>
-import { FILTERED_JOBS_BY_ORGS } from '@/store';
+import { FILTERED_JOBS_BY_ORGS } from '@/store/constants';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Subnav',
-  ...mapGetters([FILTERED_JOBS_BY_ORGS]),
   computed: {
     onJobResultsPage() {
       return this.$route.name === 'JobResults';
     },
+    ...mapGetters([FILTERED_JOBS_BY_ORGS]),
   },
 };
 </script>
