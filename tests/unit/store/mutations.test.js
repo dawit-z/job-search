@@ -24,4 +24,12 @@ describe('mutations', () => {
       expect(state).toEqual({ selectedOrgs: ['Lyft', 'Tinder'] });
     });
   });
+
+  describe('ADD_SELECTED_TYPES', () => {
+    it('updates job types that user selects', () => {
+      const state = { selectedJobTypes: [] };
+      mutations.ADD_SELECTED_JOB_TYPES(state, ['Full-time', 'Part-time']);
+      expect(state).toEqual({ selectedJobTypes: ['Full-time', 'Part-time'] });
+    });
+  });
 });

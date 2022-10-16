@@ -1,4 +1,9 @@
-import { LOGIN_USER, RECIEVE_JOBS, ADD_SELECTED_ORGS } from '@/store/constants';
+import {
+  ADD_SELECTED_ORGS,
+  ADD_SELECTED_JOB_TYPES,
+  LOGIN_USER,
+  RECIEVE_JOBS,
+} from '@/store/constants';
 
 const mutations = {
   [LOGIN_USER](state) {
@@ -9,6 +14,9 @@ const mutations = {
   },
   [ADD_SELECTED_ORGS](state, organizations) {
     state.selectedOrgs = organizations;
+  },
+  [ADD_SELECTED_JOB_TYPES](state, jobTypes) {
+    state.selectedJobTypes = jobTypes;
   },
 };
 
