@@ -1,14 +1,11 @@
-// Playground env to practice new concepts
+import { computed, reactive } from 'vue';
 
-// Arrays - order
-// Objects - association
-// Set - uniqueness
+const person = reactive({
+  name: 'Dawit',
+});
 
-const jobs = [
-  { title: 'Software Engineer', organization: 'Vue' },
-  { title: 'Data Analyst', organization: 'Netflix' },
-  { title: 'Vue Developer', organization: 'Vue' },
-];
+const title = computed(() => person.name + ' the Great');
+console.log(title.value);
 
-const result = jobs.filter((job) => job.organization === 'Vue');
-console.log(result);
+person.name = 'Peter';
+console.log(title.value);

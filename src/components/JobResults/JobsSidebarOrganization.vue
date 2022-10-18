@@ -44,6 +44,7 @@ export default {
     ...mapMutations([ADD_SELECTED_ORGS]),
     selectOrganization() {
       this.ADD_SELECTED_ORGS(this.selectedOrgs);
+      this.$router.push({ name: 'JobResults' });
     },
   },
 };
