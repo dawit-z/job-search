@@ -3,11 +3,7 @@
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
-          <li
-            v-for="jobType in UNIQUE_JOB_TYPES"
-            :key="jobType"
-            class="w-1/2 h-8"
-          >
+          <li v-for="jobType in uniqueJobs" :key="jobType" class="w-1/2 h-8">
             <input
               :id="jobType"
               v-model="selectedJobTypes"
@@ -25,26 +21,22 @@
   </Accordion>
 </template>
 
-<script>
+<script setup>
+import { useUniqueJobs } from '@/store/composables';
 import Accordion from '@/components/Common/Accordion.vue';
-import { UNIQUE_JOB_TYPES, ADD_SELECTED_JOB_TYPES } from '@/store/constants';
-import { mapGetters, mapMutations } from 'vuex';
+import { ADD_SELECTED_JOB_TYPES } from '@/store/constants';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
-export default {
-  name: 'JobsSidebarJobTypes',
-  components: { Accordion },
-  data: () => ({
-    selectedJobTypes: [],
-  }),
-  computed: {
-    ...mapGetters([UNIQUE_JOB_TYPES]),
-  },
-  methods: {
-    ...mapMutations([ADD_SELECTED_JOB_TYPES]),
-    selectJobType() {
-      this.ADD_SELECTED_JOB_TYPES(this.selectedJobTypes);
-      this.$router.push({ name: 'JobResults' });
-    },
-  },
+const router = useRouter();
+const store = useStore();
+
+const selectedJobTypes = ref([]);
+const uniqueJobs = useUniqueJobs();
+
+const selectJobType = () => {
+  store.commit(ADD_SELECTED_JOB_TYPES, selectedJobTypes.value);
+  router.push({ name: 'JobResults' });
 };
 </script>

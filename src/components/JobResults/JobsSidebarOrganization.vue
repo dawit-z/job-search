@@ -4,7 +4,7 @@
       <fieldset>
         <ul class="flex flex-row flex-wrap">
           <li
-            v-for="organization in UNIQUE_ORGANIZATIONS"
+            v-for="organization in uniqueOrgs"
             :key="organization"
             data-test="organization"
             class="w-1/2 h-8"
@@ -16,7 +16,7 @@
               :data-test="organization"
               type="checkbox"
               class="mr-3"
-              @change="selectOrganization"
+              @change="selectOrg"
             />
             <label :for="organization">{{ organization }}</label>
           </li>
@@ -26,26 +26,22 @@
   </Accordion>
 </template>
 
-<script>
+<script setup>
 import Accordion from '@/components/Common/Accordion.vue';
-import { UNIQUE_ORGANIZATIONS, ADD_SELECTED_ORGS } from '@/store/constants';
-import { mapGetters, mapMutations } from 'vuex';
+import { useUniqueOrgs } from '@/store/composables';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { ADD_SELECTED_ORGS } from '@/store/constants';
 
-export default {
-  name: 'JobsSidebarOrganization',
-  components: { Accordion },
-  data: () => ({
-    selectedOrgs: [],
-  }),
-  computed: {
-    ...mapGetters([UNIQUE_ORGANIZATIONS]),
-  },
-  methods: {
-    ...mapMutations([ADD_SELECTED_ORGS]),
-    selectOrganization() {
-      this.ADD_SELECTED_ORGS(this.selectedOrgs);
-      this.$router.push({ name: 'JobResults' });
-    },
-  },
+const store = useStore();
+const router = useRouter();
+
+const selectedOrgs = ref([]);
+const uniqueOrgs = useUniqueOrgs();
+
+const selectOrg = () => {
+  store.commit(ADD_SELECTED_ORGS, selectedOrgs.value);
+  router.push({ name: 'JobResults' });
 };
 </script>
