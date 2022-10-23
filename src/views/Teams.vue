@@ -11,12 +11,6 @@
   </HeaderContainer>
 </template>
 
-<script>
+<script setup>
 import HeaderContainer from '@/components/Common/HeaderContainer.vue';
-export default {
-  name: 'Teams',
-  components: {
-    HeaderContainer,
-  },
-};
 </script>

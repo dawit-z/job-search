@@ -5,12 +5,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import JobsSidebar from '@/components/JobResults/JobsSidebar.vue';
 import JobListings from '@/components/JobResults/JobListings.vue';
-
-export default {
-  name: 'Jobs',
-  components: { JobsSidebar, JobListings },
-};
 </script>

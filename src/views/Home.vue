@@ -2,11 +2,6 @@
   <Hero />
 </template>
 
-<script>
+<script setup>
 import Hero from '@/components/JobSearch/Hero.vue';
-
-export default {
-  name: 'Home',
-  components: { Hero },
-};
 </script>
