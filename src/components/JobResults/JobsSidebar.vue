@@ -12,16 +12,28 @@
 
       <Accordion header="Degree" />
 
-      <JobsSidebarJobTypes />
+      <JobsSidebarCheckboxGroup
+        header="Job Types"
+        :unique-values="uniqueJobs"
+        :mutation="ADD_SELECTED_JOB_TYPES"
+      />
 
-      <JobsSidebarOrganization />
+      <JobsSidebarCheckboxGroup
+        header="Organizations"
+        :unique-values="uniqueOrgs"
+        :mutation="ADD_SELECTED_ORGS"
+      />
     </section>
   </div>
 </template>
 
 <script setup>
+import { ADD_SELECTED_JOB_TYPES, ADD_SELECTED_ORGS } from '@/store/constants';
 import ActionButton from '@/components/Common/ActionButton.vue';
 import Accordion from '@/components/Common/Accordion.vue';
-import JobsSidebarOrganization from './JobsSidebarOrganization.vue';
-import JobsSidebarJobTypes from './JobsSidebarJobTypes.vue';
+import JobsSidebarCheckboxGroup from './JobsSidebarGroup.vue';
+import { useUniqueJobs, useUniqueOrgs } from '@/store/composables';
+
+const uniqueJobs = useUniqueJobs();
+const uniqueOrgs = useUniqueOrgs();
 </script>

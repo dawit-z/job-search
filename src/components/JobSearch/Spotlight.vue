@@ -16,10 +16,12 @@ import { ref, onMounted } from 'vue';
 
 const spotlights = ref([]);
 
-onMounted(async () => {
+const getSpotlights = async () => {
   const baseUrl = process.env.VUE_APP_API_URL;
   const url = `${baseUrl}/spotlights`;
   const response = await axios.get(url);
   spotlights.value = response.data;
-});
+};
+
+onMounted(getSpotlights);
 </script>

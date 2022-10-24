@@ -17,12 +17,8 @@ describe('JobListings', () => {
     ...config,
   });
 
-  const createConfig = ($route, $store) => ({
+  const createConfig = () => ({
     global: {
-      mocks: {
-        $route,
-        $store,
-      },
       stubs: {
         'router-link': RouterLinkStub,
       },

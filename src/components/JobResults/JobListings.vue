@@ -35,41 +35,32 @@
   </main>
 </template>
 
-<script>
+<script setup>
 import JobListing from '@/components/JobResults/JobListing.vue';
-import { FETCH_JOBS, FILTERED_JOBS } from '@/store/constants';
-import { mapActions, mapGetters } from 'vuex';
+import { FETCH_JOBS } from '@/store/constants';
+import { useFilteredJobs } from '@/store/composables';
+import { useStore } from 'vuex';
+import { computed, onMounted } from 'vue';
+import useCurrentPage from '@/composables/useCurrentPage';
+import usePreviousAndNextPages from '@/composables/usePreviousAndNextPages';
 
-export default {
-  name: 'JobListings',
-  components: { JobListing },
-  computed: {
-    ...mapGetters([FILTERED_JOBS]),
-    currentPage() {
-      const pageString = this.$route.query.page || '1';
-      return Number.parseInt(pageString);
-    },
-    previousPage() {
-      const previousPage = this.currentPage - 1;
-      const firstPage = 1;
-      return previousPage >= firstPage ? previousPage : undefined;
-    },
-    nextPage() {
-      const nextPage = this.currentPage + 1;
-      const lastPage = Math.ceil(this.FILTERED_JOBS.length / 10);
-      return nextPage <= lastPage ? nextPage : undefined;
-    },
-    displayedJobs() {
-      const firstJobIndex = (this.currentPage - 1) * 10;
-      const lastJobIndex = this.currentPage * 10;
-      return this.FILTERED_JOBS.slice(firstJobIndex, lastJobIndex);
-    },
-  },
-  async mounted() {
-    this.FETCH_JOBS();
-  },
-  methods: {
-    ...mapActions([FETCH_JOBS]),
-  },
-};
+const store = useStore();
+const fetchJobs = () => store.dispatch(FETCH_JOBS);
+onMounted(fetchJobs);
+
+const filteredJobs = useFilteredJobs();
+
+const currentPage = useCurrentPage();
+const lastPage = computed(() => Math.ceil(filteredJobs.value.length / 10));
+
+const { previousPage, nextPage } = usePreviousAndNextPages(
+  currentPage,
+  lastPage
+);
+
+const displayedJobs = computed(() => {
+  const firstJobIndex = (currentPage.value - 1) * 10;
+  const lastJobIndex = currentPage.value * 10;
+  return filteredJobs.value.slice(firstJobIndex, lastJobIndex);
+});
 </script>

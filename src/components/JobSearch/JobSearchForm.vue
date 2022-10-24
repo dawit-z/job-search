@@ -8,7 +8,7 @@
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-10">Role</label>
         <TextInput
-          v-model="role"
+          v-model="state.role"
           data-test="role"
           placeholder="Software Engineer"
         />
@@ -22,7 +22,7 @@
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
         <TextInput
-          v-model="location"
+          v-model="state.location"
           data-test="location"
           placeholder="Dayton"
         />
@@ -38,19 +38,33 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
+import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import ActionButton from '@/components/Common/ActionButton.vue';
 import TextInput from '../Common/TextInput.vue';
 
 const router = useRouter();
-const role = ref('');
-const location = ref('');
 
-const searchForJobs = () => {
+const state = reactive({
+  role: '',
+  location: '',
+});
+
+const rules = {
+  role: { required },
+  location: { required },
+};
+
+const v$ = useVuelidate(rules, state);
+
+const searchForJobs = async () => {
+  const isValid = await v$.value.$validate();
+  if (!isValid) return alert('Form is not valid');
   router.push({
     name: 'JobResults',
-    query: { role: role.value, location: location.value },
+    query: { role: state.role, location: state.location },
   });
 };
 </script>
